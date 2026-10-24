@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-stone-50 text-stone-900 antialiased;
+  }
+  a {
+    @apply text-pal-700 hover:text-pal-800;
+  }
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-pal-700;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-[15px] font-semibold no-underline transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-pal-700 text-white hover:bg-pal-800 hover:text-white;
+  }
+  .btn-secondary {
+    @apply btn border border-stone-300 bg-white text-stone-900 hover:bg-stone-100 hover:text-stone-900;
+  }
+  .btn-outline {
+    @apply btn border border-pal-700 bg-white text-pal-700 hover:bg-pal-50;
+  }
+  .card {
+    @apply rounded-2xl border border-stone-200 bg-white;
+  }
+  .field {
+    @apply w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-[15px] text-stone-900 placeholder:text-stone-400 focus:border-pal-700 focus:outline-none;
+  }
+  .label {
+    @apply flex flex-col gap-1.5 text-sm font-semibold text-stone-700;
+  }
+  .chip {
+    @apply inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-[13px] transition-colors;
+  }
+  .page {
+    @apply mx-auto w-full flex-1 px-5 pb-24 pt-6 md:pb-16 md:pt-8;
+  }
+}
+
+/* MapLibre controls sit above the mobile tab bar */
+@media (max-width: 767px) {
+  .maplibregl-ctrl-bottom-right {
+    bottom: 8px;
+  }
+}
