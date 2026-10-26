@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 
 const OPTIONS = [
-  ['go', 'Go'],
-  ['pro', 'Pro'],
+  ['go', 'Go · ₹1,200'],
+  ['pro', 'Pro · ₹2,500'],
   ['undecided', 'Not sure yet'],
 ];
 const NAMES = { go: 'Petrol Pal Go', pro: 'Petrol Pal Pro', undecided: 'Petrol Pal' };
@@ -56,7 +56,7 @@ export default function WaitlistForm() {
     return (
       <div role="status" className="flex flex-[2_1_380px] flex-col gap-2 rounded-2xl bg-pal-50 p-6">
         <strong className="text-lg text-pal-800">{status === 'done' ? 'You’re on the list ✓' : 'You’re already on the list ✓'}</strong>
-        <span>We’ll let you know when {NAMES[interest]} is ready. Meanwhile, explore the map.</span>
+        <span>We’ll let you know when orders open for {NAMES[interest]}, with your early-bird price. Meanwhile, explore the map.</span>
         <Link href="/" className="font-semibold">
           Go to the map →
         </Link>
@@ -96,7 +96,7 @@ export default function WaitlistForm() {
                 role="radio"
                 aria-checked={on}
                 onClick={() => setInterest(k)}
-                className={`min-h-[44px] rounded-full px-4.5 px-5 font-semibold ${on ? 'border-2 border-pal-700 bg-pal-50 text-pal-800' : 'border border-stone-300 bg-white'}`}
+                className={`min-h-[44px] rounded-full px-5 font-semibold ${on ? 'border-2 border-pal-700 bg-pal-50 text-pal-800' : 'border border-stone-300 bg-white'}`}
               >
                 {label}
               </button>
@@ -110,10 +110,10 @@ export default function WaitlistForm() {
         </p>
       )}
       <button type="submit" className="btn-primary text-base" disabled={status === 'saving'}>
-        {status === 'saving' ? 'Joining…' : 'Join the waitlist'}
+        {status === 'saving' ? 'Joining…' : 'Join the waitlist — free'}
       </button>
       <p className="text-[12.5px] text-stone-600">
-        By joining you agree to our <Link href="/privacy">Privacy policy</Link>. Prices are expected prices and may change.
+        By joining you agree to our <Link href="/privacy">Privacy policy</Link>. The early-bird price is offered to waitlist members for their first device when orders open.
       </p>
     </form>
   );
