@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 
 const OPTIONS = [
-  ['go', 'Go · ₹1,200'],
-  ['pro', 'Pro · ₹2,500'],
+  ['go', 'Go'],
+  ['pro', 'Pro'],
   ['undecided', 'Not sure yet'],
 ];
 const NAMES = { go: 'Petrol Pal Go', pro: 'Petrol Pal Pro', undecided: 'Petrol Pal' };
@@ -56,7 +56,7 @@ export default function WaitlistForm() {
     return (
       <div role="status" className="flex flex-[2_1_380px] flex-col gap-2 rounded-2xl bg-pal-50 p-6">
         <strong className="text-lg text-pal-800">{status === 'done' ? 'You’re on the list ✓' : 'You’re already on the list ✓'}</strong>
-        <span>We’ll let you know when orders open for {NAMES[interest]}, with your early-bird price. Meanwhile, explore the map.</span>
+        <span>We’ll let you know as soon as {NAMES[interest]} is available. Meanwhile, explore the map.</span>
         <Link href="/" className="font-semibold">
           Go to the map →
         </Link>
@@ -113,7 +113,7 @@ export default function WaitlistForm() {
         {status === 'saving' ? 'Joining…' : 'Join the waitlist — free'}
       </button>
       <p className="text-[12.5px] text-stone-600">
-        By joining you agree to our <Link href="/privacy">Privacy policy</Link>. The early-bird price is offered to waitlist members for their first device when orders open.
+        By joining you agree to our <Link href="/privacy">Privacy policy</Link>.
       </p>
     </form>
   );

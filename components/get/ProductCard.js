@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-export default function ProductCard({ name, model, blurb, points, price, earlyBird, featured, images }) {
+export default function ProductCard({ name, model, blurb, points, featured, images }) {
   const [colour, setColour] = useState(images[0].id);
   const img = images.find((i) => i.id === colour);
   return (
@@ -43,11 +43,7 @@ export default function ProductCard({ name, model, blurb, points, price, earlyBi
         ))}
       </ul>
       <div className="mt-auto flex flex-col gap-3 border-t border-stone-200 pt-5">
-        <div className="flex items-baseline gap-3">
-          <span className="text-3xl font-bold tracking-tight">{earlyBird}</span>
-          <span className="text-stone-500 line-through decoration-stone-400">{price}</span>
-          <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-900">Early-bird</span>
-        </div>
+        <p className="text-sm text-stone-600">Pricing announced closer to launch.</p>
         <a href={`#waitlist-${model}`} className={featured ? 'btn-primary' : 'btn-outline'}>
           Join the waitlist for {name.replace('Petrol Pal ', '')}
         </a>
