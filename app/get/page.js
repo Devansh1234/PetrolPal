@@ -9,17 +9,12 @@ import { E20Column, PermittivityBars, CombField, StepFill, StepDip, StepRead } f
 export const metadata = {
   title: 'Get Petrol Pal — know what’s in your tank',
   description:
-    'Petrol Pal is a pocket tester that measures the ethanol in your petrol at the pump. Join the waitlist for the early-bird price: Go ₹1,200, Pro ₹2,500.',
+    'Petrol Pal is a pocket tester that measures the ethanol in your petrol at the pump. Join the waitlist to be first to know when it’s available.',
   openGraph: {
     title: 'Petrol Pal — know what’s in your tank',
-    description: 'A pocket tester that measures the ethanol in your petrol, right at the pump. Early-bird prices for the waitlist.',
+    description: 'A pocket tester that measures the ethanol in your petrol, right at the pump. Join the waitlist.',
     images: [{ url: '/get/og.jpg', width: 1200, height: 630 }],
   },
-};
-
-const PRICES = {
-  go: { price: '₹1,850', early: '₹1,200' },
-  pro: { price: '₹3,250', early: '₹2,500' },
 };
 
 const SPECS = [
@@ -43,10 +38,8 @@ const SPECS = [
 
 const FAQ = [
   ['When can I buy one?', 'We’re finishing the design and testing prototypes now. Everyone on the waitlist hears first when orders open.'],
-  [
-    'How does the early-bird price work?',
-    'Join the waitlist now. When orders open, you’ll be offered the early-bird price — ₹1,200 for Go or ₹2,500 for Pro — for your first device. There’s nothing to pay until then, and no obligation to buy.',
-  ],
+  ['How much will it cost?', 'We’ll announce prices closer to launch. People on the waitlist will hear first.'],
+  ['Does joining the waitlist cost anything?', 'No. It’s free, there’s nothing to pay, and there’s no obligation to buy.'],
   ['Is this a lab test?', 'No. Petrol Pal is a consumer device that gives you a quick indication at the pump. It isn’t a certified laboratory test.'],
   ['What does it measure?', 'The share of ethanol in petrol. It doesn’t test for other substances, but an unusual reading is a sign worth checking.'],
   ['Why are the specifications “targets”?', 'Petrol Pal is still in development. The numbers on this page are what we are designing towards; we’ll publish confirmed figures once testing is done.'],
@@ -85,7 +78,7 @@ export default function GetPage() {
                 </a>
               </div>
               <p className="text-sm text-stone-400">
-                Early-bird from <strong className="text-white">{PRICES.go.early}</strong> for people on the waitlist. No payment now.
+                Join the waitlist to be first to know. It’s free.
               </p>
             </div>
             <div className="relative mx-auto aspect-square w-full max-w-[560px] [mask-image:radial-gradient(closest-side,#000_78%,transparent)]">
@@ -232,8 +225,6 @@ export default function GetPage() {
                 model="go"
                 blurb="A quick, clear answer for everyday riders and drivers."
                 points={['Three lights: green good, white unclear, red check', 'Works on its own — no phone needed', 'Small enough for a glovebox or a pocket']}
-                price={PRICES.go.price}
-                earlyBird={PRICES.go.early}
                 images={[
                   { id: 'white', label: 'White', swatch: '#ECEEEB', src: '/get/go-white.webp', w: 791, h: 1534 },
                   { id: 'black', label: 'Black', swatch: '#1C1F22', src: '/get/go-black.webp', w: 791, h: 1534 },
@@ -245,8 +236,6 @@ export default function GetPage() {
                 model="pro"
                 blurb="The exact number, for enthusiasts and fleet owners."
                 points={['Screen shows the exact ethanol percentage', 'Scan its QR code to add your test to the map', 'Bluetooth link to your phone']}
-                price={PRICES.pro.price}
-                earlyBird={PRICES.pro.early}
                 images={[
                   { id: 'black', label: 'Black', swatch: '#1C1F22', src: '/get/pro-black.webp', w: 678, h: 1574 },
                   { id: 'white', label: 'White', swatch: '#ECEEEB', src: '/get/pro-white.webp', w: 678, h: 1574 },
@@ -332,33 +321,19 @@ export default function GetPage() {
           </div>
         </section>
 
-        {/* 10 — Early bird + waitlist */}
+        {/* 10 — Waitlist */}
         <section id="waitlist" aria-labelledby="wl-h" className="scroll-mt-16 bg-[#0E1214] px-5 py-20 text-white md:px-8 md:py-28">
           <span id="waitlist-go" className="sr-only" />
           <span id="waitlist-pro" className="sr-only" />
           <div className="mx-auto grid max-w-[1180px] gap-10 md:grid-cols-[1fr_1.1fr]">
             <div className="flex flex-col gap-6">
-              <Eyebrow dark>Early bird</Eyebrow>
+              <Eyebrow dark>Waitlist</Eyebrow>
               <h2 id="wl-h" className="text-4xl font-bold leading-[1.05] tracking-tight md:text-[52px]">
-                Lock in the early-bird price.
+                Be first to know.
               </h2>
               <p className="max-w-[46ch] text-lg text-stone-300">
-                Join the waitlist today. When orders open, you’ll be offered the early-bird price for your first device. No payment now, and no obligation to buy.
+                Join the waitlist and we’ll tell you as soon as Petrol Pal is ready, before anyone else. It’s free, and there’s no obligation to buy.
               </p>
-              <div className="grid max-w-[460px] grid-cols-2 gap-3">
-                {[
-                  ['Petrol Pal Go', PRICES.go],
-                  ['Petrol Pal Pro', PRICES.pro],
-                ].map(([n, p]) => (
-                  <div key={n} className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
-                    <div className="text-sm text-stone-400">{n}</div>
-                    <div className="mt-1 flex items-baseline gap-2">
-                      <span className="text-3xl font-bold">{p.early}</span>
-                      <span className="text-stone-500 line-through">{p.price}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
             <div className="rounded-[28px] bg-white p-6 text-stone-900 md:p-8">
               <WaitlistForm />
